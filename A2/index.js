@@ -5,7 +5,7 @@ async function render() {
     house = d3.rollups(house, d => d.length, d => d.Suburb).map(d => {
         return {
             Suburb: d[0],
-            count_of_transactions: d[1]
+            transaction_count: d[1]
         }
     })
 
@@ -48,7 +48,7 @@ async function render() {
                         "from": {
                             "data": { "values": house },
                             "key": "Suburb",
-                            "fields": ["count_of_transactions", 'Suburb']
+                            "fields": ["transaction_count", 'Suburb']
                         }
                     }
                 ],
@@ -56,14 +56,15 @@ async function render() {
                 "encoding": {
 
                     "fill": {
-                        "field": "count_of_transactions",
+                        "field": "transaction_count",
                         "type": "quantitative",
                         "scale": {
+                            "type":"threhold",
                             "range": ['blue', 'yellow']
                         }
                     },
-                    "tooltip": [{ "field": "properties.LOC_NAME", "type": "norminal" }
-                        , { "field": "count_of_transactions", "type": "quantitative" }]
+                    "tooltip": [{ "field": "properties.LOC_NAME", "type": "norminal","title":"Suburb" }
+                        , { "field": "transaction_count", "type": "quantitative" ,"title":"Sales"}]
 
                 }
             }
@@ -76,7 +77,9 @@ async function render() {
     }
 
 
-    vegaEmbed("#map", map);
+    vegaEmbed("#map", map).then(function(result){
+
+    }).catch(console.error);
 
 }
 
