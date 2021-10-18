@@ -14,15 +14,10 @@ render()
 
 async function render_map(house) {
 
-    house = d3.rollups(house, d => {
-        return {
-            sales: d.length,
-//             Propertycount: d3.max(d, v => v.Propertycount)
-        }
-    }, d => d.Suburb).map(d => {
+    house = d3.rollups(house, d => d.length, d => d.Suburb).map(d => {
         return {
             Suburb: d[0],
-            transaction_count: d[1].sales // / (+d[1].Propertycount)
+            transaction_count: d[1]
         }
     })
 
@@ -89,7 +84,7 @@ async function render_map(house) {
                         }
                     },
                     "tooltip": [{ "field": "properties.LOC_NAME", "type": "norminal","title":"Suburb" }
-                        , { "field": "transaction_count", "type": "quantitative",format:".1%","title":"Sales Rate" }]
+                        , { "field": "transaction_count", "type": "quantitative",format:".1%","title":"Sales Count" }]
 
                 }
             }
