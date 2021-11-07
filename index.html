@@ -6,17 +6,185 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-</head>
+    <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+</head>
+<!-- banner -->
+<div id="top-banner">
+    <img src="banner.png">
+        
 <body>
-    <div id="map"> </div>
+</div>
+<div class="page">
+    
+    
+
+    <!-- pure grid group -->
+     <div class="pure-g">
+       <div class="pure-u-1-1">
+         <h1>Residential Property Market in Greater Melbourne 2016-2018</h1>
+         <h3>An overview of facts & prospects based on real data collected from Domain.com</h2>
+       </div>
+     </div>
+   <!-- end pure grid group -->
+ 
+     <!-- pure grid group -->
+     <div class="pure-g">
+         <div class="pure-u-1-3">
+           <div class="description description-left">
+             <h2>Number of properties for sale vs. actually sold by suburb</h2>
+             <p>
+                The left visualisation shows
+                the number of for-sale properties per hundred in each suburb. 
+                This reflects the population and housing mobility in the corresponding suburb and whether 
+                it is a popular place for people to invest in real estates from 2016 to 2018
+                to some extent.
+
+                <br/>
+                <br/>
+                
+
+                By contrast, as shown in the visualisation on the right hand side, the variation of the 
+                number of properties being successfully sold per hundred across Melbourne is presented with extreme
+                values highlighed in yellow (minimal conversion rate) and darker red (higher conversion rate) to assist 
+                investment decision making.
+                <br/>
+                <br/>
+                
+                It has shown that in general, different from the variation that an increasing 
+                proportion of properties were for sale as it approaches the metropolitan and the regioinal 
+                area has a smaller housing market and lower mobility, 
+                properties located in regional Melbourne were more likely to be sold.
+                
+             </p>
+           </div>
+         </div>
+         <div class="pure-u-1-3">
+            <div id="map"  class="vis-container"></div>
+          </div>
+          <div class="pure-u-1-3">
+            <div id="map_sales"  class="vis-container"></div>
+          </div>
+     </div>
+     <!-- end pure grid group -->
+ 
+ 
+     <!-- pure grid group -->
+     <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="bar"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <h2>Median Housing Price Growth in Greater Melbourne over Quarters</h2>
+            <p>There had been an overwhelming downward trend in median housing price in Melbourne
+              with far greater negative quarter-over-quarter growth rate from 2016 to 2018 comparing to positive growth.
+              <br/>
+            
+                Looking at the figure each year, only median housing price in 2016 has shown a positive growth rate.
+                Both the year of 2017 and 2018 had an overall negative growth rate and appeared to continue 
+                to fall at a rapid pace. This is a warning signal for the potential house buyers to be cautious with their 
+                purchase decision making if they do consider this as an investment.
+                <br/>
+                
+                The following sections will provide more insights into housing selection.
+              </p>
+          </div>
+        </div>
+      
+    </div>
+
+    <div class="pure-g">
+        <div class="pure-u-2-3">
+          <div id="bar_suburb"  class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="description description-right">
+            <h2>Which suburbs had the most housing price growth?</h2>
+            <p>
+              Heathmont was ranked first for the growth rate in housing transaction price over 2016-2018 with a staggering surge over 
+              129% from 2016 to 2018, far ahead of the rest of suburbs Melbourne wise.  
+              <br/>
+            
+              It is noted that the gap between each suburb's price growth narrows down as the rank number goes down. 
+              <br/>
+                <br/>
+              You can also use the slider to explore up to top 50 earning suburbs and look them up in the above maps for more information on their 
+              housing market in terms of for-sale and conversion rate to thoroughly assist purchase decision making.
+              </p>
+          </div>
+        </div>
+      
+    </div>
+    </body>  
+     <!-- end pure grid group -->
+    
+     <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>How is housing price affected by its attributes?</h2>
+          <p>
+          With respect to the location, there is a general trend that the house was sold at a higher price as 
+          it is closer to the Melbourne CBD. Most properties sold clustered in between 5 to 25 km away from the CBD.
+          
+          <br/>
+          <br/>
+          Units are smaller in size and generally closer to the CBD at a lower price range under $0.8M. 
+          Unit price is also the least correlated with the distance. It usually depends on the size of the property (bedroom number).
+          <br/>
+          House prices are very much related to its location. Plenty of them within 5km from the CBD 
+          were sold high even with a smaller size. For those located further than 3km from CBD, size is also an highly key factor
+          that affects the price.
+          </br>
+          Townhouses usually have a room number of 2-3, mostly located within 18km from the CBD. Similar to houses, generally, it had a higher
+          price if located close to CBD, however, can
+          be easily purchased at a lower price range between $500K and $1M.
+          
+          </p>
+        </div>
+      </div>
+       <div class="pure-u-1-3">
+         <div id="housing_scatter"  class="vis-container"></div>
+       </div>
+  </div>
+
+
+ 
+     <script src="index.js"></script>
+   </div> <!-- end page -->
+    
+
+
+<!-- <body>
+    <div id="map">
+
+    </div>
+    <div id="map_sales">
+
+    </div>
+
+    <div id="bar"></div>
     <div id="bar_suburb"></div>
+    <div id="housing_scatter"></div>
+
     <script src="index.js"></script>
+
 </body>
 
 </html>
