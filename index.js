@@ -316,7 +316,9 @@ function render_bar_suburb(house) {
                                             "field": "cum_diff",
                                             "type": "quantitative",
                                             
-                                            "scale": {
+                                            "
+                    
+                    ": {
                                                 "domain": [0,1.3],
                                                 format:".1%",
                                                 "scheme": "reds"
@@ -566,7 +568,7 @@ function render_housing_scatter(house)
             "type": "quantitative",
             "title": "Distance from Melbourne CBD in km",
             "axis": {"format": ","},
-            "scale": {"type": "log", "domain": [0.5, 50.5]}
+            "scale": {"type": "log", "domain": [0.5, 53.5]}
           },
           "y": {
             "field": "Price",
@@ -593,8 +595,8 @@ function render_housing_scatter(house)
                 "type": "quantitative",
                 "scale": {
                   "type": "threshold",
-                  "domain": [2, 5, 7],
-                  "range": [50, 150, 350, 700]
+                  "domain": [2, 3, 5],
+                  "range": [50, 110, 220, 425]
                 },
                 "legend": {"format": ".1s"}
               },
