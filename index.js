@@ -35,9 +35,9 @@ async function render_map(house) {
     let LOC_NAME_select = d3.groups(vic_data.features, d => d.properties.LOC_NAME).map(d => d[0])
     let map = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 401,
-        "height":360,
-        "title": "Housing for sale per Suburb in Greater Melbourne 2016-2018",
+        "width": 245,
+        "height":250,
+        "title": "Housing for sale per Suburb in Greater Melbourne",
 
         "data": {
             "values": vic_data,
@@ -56,7 +56,7 @@ async function render_map(house) {
         },
         {
             "name": "zoom_level",
-            "value": 17000, //default scale
+            "value": 11000, //default scale
             "bind": {
               "input": "range",
               "min": 10000,
@@ -178,8 +178,8 @@ function render_bar(house) {
 
     let barjson = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 530,
-        "height": 320,
+        "width": 424,
+        "height": 256,
         "data": { "values": data },
         "title":"Quarterly Growth of Median Housing Price in Greater Melbourne 2016-2018",
 
@@ -270,8 +270,8 @@ function render_bar_suburb(house) {
     let barjson = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "title":"Top Earning Suburbs in Greater Melbourne 2016-2018",
-        "width": 650,
-        "height": 440,
+        "width": 520,
+        "height": 352,
         "params": [
             {
                 "name": "suburbRank", "value": 10,
@@ -493,9 +493,9 @@ function render_housing_scatter(house)
     let scatter =  {
     
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 720,
-        "height": 500,
-        "title": "Housing Price in Greater Melbourne 2016-2018",
+        "width": 576,
+        "height": 400,
+        "title": "Housing Price in Greater Melbourne",
         "data": 
         {
             "values": house
@@ -661,8 +661,8 @@ async function render_map_sales(house) {
     let LOC_NAME_select = d3.groups(vic_data.features, d => d.properties.LOC_NAME).map(d => d[0])
     let map = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 403,
-        "height": 390,
+        "width": 245,
+        "height": 250,
         "title": "Housing Sold per Suburb in Greater Melbourne 2016-2018",
 
         "data": {
@@ -682,7 +682,7 @@ async function render_map_sales(house) {
         },
         {
             "name": "zoom_level",
-            "value": 17000, //default scale
+            "value": 11000, //default scale
             "bind": {
               "input": "range",
               "min": 10000,
